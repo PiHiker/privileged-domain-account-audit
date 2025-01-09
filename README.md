@@ -1,4 +1,5 @@
 Privileged Account Audit Script
+
 This PowerShell script is designed to perform an audit of specified privileged groups within an Active Directory environment. It generates a detailed report listing each user's group memberships, along with other critical user attributes such as account status, last logon date, and more. The report is exported to an Excel file for easy viewing and further analysis.
 
 Features
