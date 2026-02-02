@@ -5,7 +5,7 @@
 [![Active%20Directory](https://img.shields.io/badge/Active%20Directory-Module-00A4EF?logo=microsoft&logoColor=white)](https://learn.microsoft.com/powershell/module/activedirectory/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-A PowerShell script that audits privileged Active Directory (AD) security groups in Windows domains and produces an Excel report with key user attributes (account status, last logon, password age, and more). Ideal for domain admin audits, privileged access reviews, and compliance reporting.
+A PowerShell script that audits privileged Active Directory groups and produces an Excel report with key user attributes (account status, last logon, password age, and more).
 
 ## ✨ Features
 
@@ -19,17 +19,6 @@ A PowerShell script that audits privileged Active Directory (AD) security groups
 - Active Directory PowerShell module
 - ImportExcel PowerShell module
 - Administrative privileges on the system where the script runs
-
-## 🔍 Audited Active Directory Groups
-
-The default report includes direct members of the following privileged AD groups:
-
-- Domain Admins
-- Enterprise Admins
-- Administrators
-- Backup Operators
-- Account Operators
-- Schema Admins
 
 ## ⚙️ Setup
 
