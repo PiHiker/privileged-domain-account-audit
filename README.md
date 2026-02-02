@@ -1,40 +1,112 @@
-Privileged Account Audit Script
+# Privileged Account Audit Script
 
-This PowerShell script is designed to perform an audit of specified privileged groups within an Active Directory environment. It generates a detailed report listing each user's group memberships, along with other critical user attributes such as account status, last logon date, and more. The report is exported to an Excel file for easy viewing and further analysis.
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white)](https://learn.microsoft.com/powershell/)
+[![Windows](https://img.shields.io/badge/Windows-Supported-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![Active%20Directory](https://img.shields.io/badge/Active%20Directory-Module-00A4EF?logo=microsoft&logoColor=white)](https://learn.microsoft.com/powershell/module/activedirectory/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-Features
-Retrieves direct memberships of specified privileged groups.
-Gathers user details such as DisplayName, LastLogonDate, Enabled status, PasswordLastSet, and Description.
-Exports the data to an Excel file with sorting and filtering enabled.
-Prerequisites
-Windows PowerShell 5.1 or higher.
-Active Directory PowerShell module.
-ImportExcel PowerShell module.
-Administrative privileges on the system where the script is run.
+A PowerShell script that audits privileged Active Directory (AD) security groups in Windows domains and produces an Excel report with key user attributes (account status, last logon, password age, and more). Ideal for domain admin audits, privileged access reviews, and compliance reporting.
 
-Setup
-Install PowerShell Modules: Ensure the ActiveDirectory and ImportExcel modules are installed. You can install them using the following PowerShell commands if not already installed:
+**Keywords:** Active Directory audit, privileged account audit, domain admins, enterprise admins, Windows security, PowerShell audit script.
 
+## 📌 Table of Contents
+
+- [✨ Features](#-features)
+- [✅ Prerequisites](#-prerequisites)
+- [🔍 Audited Active Directory Groups](#-audited-active-directory-groups)
+- [⚡ Quick Start](#-quick-start)
+- [⚙️ Setup](#-setup)
+- [▶️ Usage](#-usage)
+- [🧾 Output](#-output)
+- [🛠️ Configuration](#-configuration)
+- [📄 License](#-license)
+
+## ✨ Features
+
+- Retrieves direct memberships of specified privileged groups.
+- Collects user details (DisplayName, LastLogonDate, Enabled, PasswordLastSet, Description).
+- Exports results to Excel with sorting and filtering enabled.
+
+## ✅ Prerequisites
+
+- Windows PowerShell **5.1+**
+- Active Directory PowerShell module
+- ImportExcel PowerShell module
+- Administrative privileges on the system where the script runs
+
+## 🔍 Audited Active Directory Groups
+
+The default report includes direct members of the following privileged AD groups:
+
+- Domain Admins
+- Enterprise Admins
+- Administrators
+- Backup Operators
+- Account Operators
+- Schema Admins
+
+## ⚡ Quick Start
+
+```powershell
+# Install dependencies (if needed)
 Install-Module -Name ActiveDirectory
 Install-Module -Name ImportExcel
 
-Download the Script: Download Privileged-Account-Audit.ps1 from the source or copy the content into a new file named Privileged-Account-Audit.ps1 on your local machine.
-
-Prepare the Environment: Ensure the directory where the report will be saved (C:\Audit) exists, or modify the script to point to an existing directory.
-
-Usage
-
-To run the script, follow these steps:
-
-Open PowerShell: Open a PowerShell window with administrative privileges.
-
-Navigate to the Script's Location: Use the cd command to change the directory to where Privileged-Account-Audit.ps1 is located.
-
-cd path\to\your\script
-
-Execute the Script: Run the script by typing:
-
+# Run the script
 .\Privileged-Account-Audit.ps1
-You will be prompted to enter credentials. Provide credentials with sufficient rights to query Active Directory.
+```
 
-Review the Report: Once the script completes execution, check the specified output directory c:\temp for the Excel file. Review the report for accuracy and completeness.
+## ⚙️ Setup
+
+1. **Install required modules** (if not already installed):
+
+   ```powershell
+   Install-Module -Name ActiveDirectory
+   Install-Module -Name ImportExcel
+   ```
+
+2. **Download the script**:
+   - Save `Privileged-Account-Audit.ps1` locally.
+
+3. **Prepare the output directory**:
+   - Ensure `C:\Temp` exists, or update the script to point to your preferred location.
+
+## ▶️ Usage
+
+1. **Open PowerShell** with administrative privileges.
+2. **Navigate to the script directory**:
+
+   ```powershell
+   cd path\to\your\script
+   ```
+
+3. **Run the script**:
+
+   ```powershell
+   .\Privileged-Account-Audit.ps1
+   ```
+
+4. **Authenticate** when prompted with credentials that can query Active Directory.
+5. **Review the report** at `C:\Temp` (or your configured output directory).
+
+## 🧾 Output
+
+The Excel report includes:
+
+- Group membership (direct members of privileged groups)
+- Display name
+- Account enabled/disabled state
+- Last logon date
+- Password last set date
+- Account description
+
+## 🛠️ Configuration
+
+Edit these variables near the top of `Privileged-Account-Audit.ps1` to customize the audit:
+
+- **`$privilegedGroups`**: Add or remove groups to adjust audit scope (for example, add `Server Operators`).  
+- **`$reportPath`**: Change the output location or filename pattern for the Excel report.
+
+## 📄 License
+
+Licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
