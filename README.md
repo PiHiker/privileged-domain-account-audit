@@ -1,40 +1,69 @@
-Privileged Account Audit Script
+# Privileged Account Audit Script
 
-This PowerShell script is designed to perform an audit of specified privileged groups within an Active Directory environment. It generates a detailed report listing each user's group memberships, along with other critical user attributes such as account status, last logon date, and more. The report is exported to an Excel file for easy viewing and further analysis.
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?logo=powershell&logoColor=white)](https://learn.microsoft.com/powershell/)
+[![Windows](https://img.shields.io/badge/Windows-Supported-0078D6?logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![Active%20Directory](https://img.shields.io/badge/Active%20Directory-Module-00A4EF?logo=microsoft&logoColor=white)](https://learn.microsoft.com/powershell/module/activedirectory/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-Features
-Retrieves direct memberships of specified privileged groups.
-Gathers user details such as DisplayName, LastLogonDate, Enabled status, PasswordLastSet, and Description.
-Exports the data to an Excel file with sorting and filtering enabled.
-Prerequisites
-Windows PowerShell 5.1 or higher.
-Active Directory PowerShell module.
-ImportExcel PowerShell module.
-Administrative privileges on the system where the script is run.
+A PowerShell script that audits privileged Active Directory groups and produces an Excel report with key user attributes (account status, last logon, password age, and more).
 
-Setup
-Install PowerShell Modules: Ensure the ActiveDirectory and ImportExcel modules are installed. You can install them using the following PowerShell commands if not already installed:
+## ✨ Features
 
-Install-Module -Name ActiveDirectory
-Install-Module -Name ImportExcel
+- Retrieves direct memberships of specified privileged groups.
+- Collects user details (DisplayName, LastLogonDate, Enabled, PasswordLastSet, Description).
+- Exports results to Excel with sorting and filtering enabled.
 
-Download the Script: Download Privileged-Account-Audit.ps1 from the source or copy the content into a new file named Privileged-Account-Audit.ps1 on your local machine.
+## ✅ Prerequisites
 
-Prepare the Environment: Ensure the directory where the report will be saved (C:\Audit) exists, or modify the script to point to an existing directory.
+- Windows PowerShell **5.1+**
+- Active Directory PowerShell module
+- ImportExcel PowerShell module
+- Administrative privileges on the system where the script runs
 
-Usage
+## ⚙️ Setup
 
-To run the script, follow these steps:
+1. **Install required modules** (if not already installed):
 
-Open PowerShell: Open a PowerShell window with administrative privileges.
+   ```powershell
+   Install-Module -Name ActiveDirectory
+   Install-Module -Name ImportExcel
+   ```
 
-Navigate to the Script's Location: Use the cd command to change the directory to where Privileged-Account-Audit.ps1 is located.
+2. **Download the script**:
+   - Save `Privileged-Account-Audit.ps1` locally.
 
-cd path\to\your\script
+3. **Prepare the output directory**:
+   - Ensure `C:\Audit` exists, or update the script to point to your preferred location.
 
-Execute the Script: Run the script by typing:
+## ▶️ Usage
 
-.\Privileged-Account-Audit.ps1
-You will be prompted to enter credentials. Provide credentials with sufficient rights to query Active Directory.
+1. **Open PowerShell** with administrative privileges.
+2. **Navigate to the script directory**:
 
-Review the Report: Once the script completes execution, check the specified output directory c:\temp for the Excel file. Review the report for accuracy and completeness.
+   ```powershell
+   cd path\to\your\script
+   ```
+
+3. **Run the script**:
+
+   ```powershell
+   .\Privileged-Account-Audit.ps1
+   ```
+
+4. **Authenticate** when prompted with credentials that can query Active Directory.
+5. **Review the report** at `C:\temp` (or your configured output directory).
+
+## 🧾 Output
+
+The Excel report includes:
+
+- Group membership (direct members of privileged groups)
+- Display name
+- Account enabled/disabled state
+- Last logon date
+- Password last set date
+- Account description
+
+## 📄 License
+
+Licensed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
